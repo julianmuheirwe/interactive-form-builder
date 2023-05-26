@@ -2,10 +2,8 @@
 vue based form builder based on a particular data structure. This library will allow developers to dynamically build forms in the backend
 and be able to get user input through their products and get data posted back to them in the backend
 
-<font style="color:white; background-color: #3480eb; padding:2px 3px; border-radius:3px;">v0.0.1</font>
-<font style="color:white; background-color: #eb6b34; padding:2px 3px; border-radius:3px; font-weight:bold;">npm</font>
-<font style="color:white; background-color: green; padding:2px 3px; border-radius:3px; font-weight:bold;">vue</font>
-<font style="color:white; background-color: red; padding:2px 3px; border-radius:3px; font-weight:bold;">!experiment</font>
+
+> **Warning:** This library is still in experiment mode
 
 ## Getting Started?
 ### Usage
