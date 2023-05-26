@@ -1,6 +1,6 @@
 import {defineStore} from "pinia";
 import {ref} from "vue";
-import api from "../server/api.js"
+import api from "./api.js"
 
 export const useFormControlStore = defineStore("form-control", ()=>{
     const formData = ref(null)
