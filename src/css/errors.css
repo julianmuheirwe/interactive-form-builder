@@ -1,0 +1,25 @@
+.error{
+    font-size:9px;
+    color: red;
+    margin:5px 0;
+}
+
+.error-header{
+    padding: 2px;
+    border-radius: 3px;
+    background: red;
+    color:#fff;
+}
+
+.warning{
+    font-size:9px;
+    color: #dc6008;
+    margin:5px 0;
+}
+
+.warning-header{
+    padding: 2px;
+    border-radius: 3px;
+    background: #dc6008;
+    color:#fff;
+}

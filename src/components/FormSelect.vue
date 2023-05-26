@@ -16,8 +16,8 @@
 </template>
 
 <script setup>
-import {onMounted, watch} from "vue";
-import ValidationError from "./ValidationError.vue";
+import {onMounted} from "vue";
+import ValidationError from "../validation/ValidationError.vue";
 
 const emit = defineEmits(['onChange'])
 const props = defineProps({

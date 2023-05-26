@@ -28,7 +28,7 @@
 
 <script setup>
 import {onMounted, ref} from "vue";
-import ValidationError from "./ValidationError.vue";
+import ValidationError from "../validation/ValidationError.vue";
 
 const emit = defineEmits(['onChange'])
 const props = defineProps({

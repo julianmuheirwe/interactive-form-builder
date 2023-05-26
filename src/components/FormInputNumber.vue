@@ -14,7 +14,7 @@
 
 <script setup>
 import {onMounted} from "vue";
-import ValidationError from "./ValidationError.vue";
+import ValidationError from "../validation/ValidationError.vue";
 import {useNumberValidation} from "../validation/validation.js";
 
 const emit = defineEmits(['onChange'])
