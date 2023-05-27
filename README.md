@@ -1,11 +1,11 @@
 # interactive-form-builder
-vue based form builder based on a particular data structure. This library will allow developers to dynamically build forms in the backend
-and be able to get user input through their products and get data posted back to them in the backend
+This is a VueJs based form builder that allows you to define your form in your backend, 
+have it rendered on the front end and interactive-form-builder will have it submitted back to your backend 
+as you will see in the usage below. 
 
 
 > **Warning:** This library is still in experiment mode
 
-## Getting Started?
 ### Usage
 
 ```
@@ -16,6 +16,110 @@ and be able to get user input through their products and get data posted back to
   highlight-color="#00ff00"
   text-color="#2b2b2b"
   :has-cancel-button="true"
-  v-on:cancel="onCancel"
-  v-on:submitted="onSubmitted"/>
+  @cancel="onCancel"
+  @submitted="onSubmitted"/>
 ```
+### Define form objects that take the following structure
+
+### Structure of the server defined in the backend
+
+```
+{
+    title:"Form Title",
+    server:{
+        url:http://127.0.0.1/submit,
+    },
+    columns:[ 
+        {
+            fields:[ ...formObjects] 
+        },
+        ...
+    ]
+}
+```
+
+#### For an input-[text]
+
+```
+{
+    label:"first name",
+    variable:"firstName",
+    type:"text",
+    validations:{
+        maxLength:50
+    },
+    required:true
+}
+```
+
+#### For an input-[date]
+
+```
+{
+    label:"dob",
+    variable:"dob",
+    type:"date",
+    required:true
+}
+```
+
+#### For an input-[number]
+
+```
+{
+    label:"height",
+    variable:"height",
+    type:"number",
+    validations:{
+        max:50,
+        min:10,
+    },
+    required:false
+}
+```
+
+#### For a select
+
+```
+{
+    label:"sex",
+    variable:"sex",
+    type:"select",
+    options:["Male","Female"],
+    required:false
+}
+```
+
+#### For radio buttons
+
+```
+{
+    label:"nationality",
+    variable:"nationality",
+    type:"radio",
+    options:["Ugandan", "Other"],
+    required:false
+}
+```
+
+#### For checkboxes
+
+```
+{
+    label:"hobbies",
+    variable:"hobbies",
+    type:"checkbox",
+    options:["Dancing", "Singing", "Reading", "Fitness"],
+    required:false
+}
+```
+
+#### For adding instructions at the top of the form
+
+```
+instructions:{
+    information:"Lorem Ipsum...",
+    backgroundColor:"#06912b"
+},
+```
+
