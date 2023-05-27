@@ -1,4 +1,4 @@
-# vue-form-builder
+# interactive-form-builder
 vue based form builder based on a particular data structure. This library will allow developers to dynamically build forms in the backend
 and be able to get user input through their products and get data posted back to them in the backend
 
