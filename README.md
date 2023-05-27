@@ -10,7 +10,7 @@ and be able to get user input through their products and get data posted back to
 
 ```
 <FormBuilder 
-  load-from="http://127.0.0.1:3000/form-details"
+  load-from="http://127.0.0.1/form"
   font-family="monospace"
   theme-color="#ff00ff" 
   highlight-color="#00ff00"
