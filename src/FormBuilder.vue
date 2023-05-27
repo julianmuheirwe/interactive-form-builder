@@ -244,7 +244,7 @@ import FormSwitch from "./components/FormSwitch.vue";
 import Instructions from "./components/Instructions.vue";
 import FormInputNumber from "./components/FormInputNumber.vue";
 
-const emit = defineEmits(['onCancel', 'onSubmit', 'onSubmitted'])
+const emit = defineEmits(['cancel', 'submit', 'submitted'])
 const props = defineProps({
   loadFrom: {
     type: String,
@@ -327,15 +327,15 @@ function onFormUpdated(variable, value){
 function onSubmit() {
   alert(JSON.stringify(formData))
   if (props.loadFrom !== null) {
-    let url = getEndpoint(form.formData.server)
+    let url = form.formData.server.url
     form.submitForm(url, formData)
   } else {
-    emit("onSubmit", formData)
+    emit("submit", formData)
   }
 }
 
 function cancel() {
-  emit("onCancel", "canceled")
+  emit("cancel", "canceled")
 }
 
 function getEndpoint(server) {
@@ -355,7 +355,7 @@ watch(() => form.formData, () => {
 })
 
 watch(() => form.submit, () => {
-  emit("onSubmitted", form.submit)
+  emit("submitted", form.submit)
 })
 
 watch(() => form.error, () => {

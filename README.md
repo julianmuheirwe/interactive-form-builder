@@ -16,6 +16,6 @@ and be able to get user input through their products and get data posted back to
   highlight-color="#00ff00"
   text-color="#2b2b2b"
   :has-cancel-button="true"
-  v-on:onCancel="onCancel"
-  v-on:onSubmitted="onSubmitted"/>
+  v-on:cancel="onCancel"
+  v-on:submitted="onSubmitted"/>
 ```
