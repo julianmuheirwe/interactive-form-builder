@@ -12,7 +12,6 @@ and be able to get user input through their products and get data posted back to
 <FormBuilder 
   load-from="http://127.0.0.1:3000/form-details"
   font-family="monospace"
-  :columns="1" 
   theme-color="#ff00ff" 
   highlight-color="#00ff00"
   text-color="#2b2b2b"
