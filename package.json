@@ -1,6 +1,6 @@
 {
-  "name": "vue-form-builder",
-  "version": "0.1",
+  "name": "interactive-form-builder",
+  "version": "0.0.1",
   "type": "module",
   "description": "",
   "main": "dist/library.js",
