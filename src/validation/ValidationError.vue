@@ -16,5 +16,5 @@ export default {
 </script>
 
 <style scoped>
-@import "/src/css/errors.css";
+@import "/src/styles/errors.css";
 </style>

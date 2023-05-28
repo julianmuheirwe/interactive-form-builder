@@ -232,68 +232,71 @@
 </template>
 
 <script setup>
-import {onMounted, watch} from "vue";
-import {useFormControlStore} from "./form-control.js";
-import RadioGroup from "./components/RadioGroup.vue";
-import CheckboxGroup from "./components/CheckboxGroup.vue";
-import FormTextArea from "./components/FormTextArea.vue";
-import FormInput from "./components/FormInput.vue";
-import FormDate from "./components/FormDate.vue";
-import FormSelect from "./components/FormSelect.vue";
-import FormSwitch from "./components/FormSwitch.vue";
-import Instructions from "./components/Instructions.vue";
-import FormInputNumber from "./components/FormInputNumber.vue";
+import {defineComponent, onMounted, watch} from "vue";
+import {useFormControlStore} from "../form-control.js";
+import RadioGroup from "../../widgets/RadioGroup.vue";
+import CheckboxGroup from "../../widgets/CheckboxGroup.vue";
+import FormTextArea from "../../widgets/FormTextArea.vue";
+import FormInput from "../../widgets/FormInput.vue";
+import FormDate from "../../widgets/FormDate.vue";
+import FormSelect from "../../widgets/FormSelect.vue";
+import FormSwitch from "../../widgets/FormSwitch.vue";
+import Instructions from "../../widgets/Instructions.vue";
+import FormInputNumber from "../../widgets/FormInputNumber.vue";
 
-const emit = defineEmits(['cancel', 'submit', 'submitted'])
-const props = defineProps({
-  loadFrom: {
-    type: String,
-    default: null
+export default defineComponent({
+  name: 'FormBuilder',
+  props: {
+    loadFrom: {
+      type: String,
+      default: null
+    },
+    data: {
+      type: Object,
+      default: null
+    },
+    hasCancelButton: {
+      type: Boolean,
+      default: false
+    },
+    hasBorderWithShadow: {
+      type: Boolean,
+      default: false
+    },
+    hasBorder: {
+      type: Boolean,
+      default: true
+    },
+    columns: {
+      type: Number,
+      default: 1
+    },
+    submitButtonText: {
+      type: String,
+      default: "Submit"
+    },
+    colSpacing: {
+      type: String,
+      default: "5px"
+    },
+    fontFamily: {
+      type: String,
+      default: "Arial"
+    },
+    themeColor: {
+      type: String,
+      default: "#a0a0a0"
+    },
+    highlightColor: {
+      type: String,
+      default: "#d50303"
+    },
+    textColor: {
+      type: String,
+      default: "#000000"
+    },
   },
-  data: {
-    type: Object,
-    default: null
-  },
-  hasCancelButton: {
-    type: Boolean,
-    default: false
-  },
-  hasBorderWithShadow: {
-    type: Boolean,
-    default: false
-  },
-  hasBorder: {
-    type: Boolean,
-    default: true
-  },
-  columns: {
-    type: Number,
-    default: 1
-  },
-  submitButtonText: {
-    type: String,
-    default: "Submit"
-  },
-  colSpacing: {
-    type: String,
-    default: "5px"
-  },
-  fontFamily: {
-    type: String,
-    default: "Arial"
-  },
-  themeColor: {
-    type: String,
-    default: "#a0a0a0"
-  },
-  highlightColor: {
-    type: String,
-    default: "#d50303"
-  },
-  textColor: {
-    type: String,
-    default: "#000000"
-  },
+  emits: ['cancel', 'submit', 'submitted']
 })
 
 const form = useFormControlStore()
