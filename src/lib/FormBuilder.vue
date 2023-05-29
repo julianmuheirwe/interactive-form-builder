@@ -1,6 +1,9 @@
 <template>
   <div class="container">
-    <form v-if="form.formData" :class="(hasBorder) ? 'form' : (hasBorderWithShadow) ? 'form-shadow-borderless' : 'form-borderless'" id="form" @submit.prevent="onSubmit">
+    <form
+        v-if="formToBuild.value" :class="(hasBorder) ? 'form' : (hasBorderWithShadow) ? 'form-shadow-borderless' : 'form-borderless'"
+        id="form"
+        @submit.prevent="onSubmit">
       <h2 class="title">{{ builderData.title }}</h2>
 
       <div v-if="builderData.instructions" >
@@ -232,7 +235,7 @@
 </template>
 
 <script setup>
-import {defineComponent, onMounted, ref, watch} from "vue";
+import { onMounted, ref, watch} from "vue";
 import axios from "axios"
 import RadioGroup from "../widgets/RadioGroup.vue";
 import CheckboxGroup from "../widgets/CheckboxGroup.vue";
@@ -249,8 +252,7 @@ import FormInputNumber from "../widgets/FormInputNumber.vue";
 //   emits: ['cancel', 'submit', 'submitted']
 // })
 
-const props =defineProps(
-{
+const props =defineProps({
   loadFrom: {
     type: String,
   default: null

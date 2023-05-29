@@ -1,4 +1,4 @@
-import { openBlock as d, createElementBlock as h, createElementVNode as C, normalizeClass as W, toDisplayString as E, createTextVNode as q, useCssVars as I, ref as D, onMounted as V, createCommentVNode as y, Fragment as U, renderList as j, unref as v, createVNode as O, withDirectives as J, vModelText as Q, vModelSelect as mt, vModelCheckbox as bt, pushScopeId as We, popScopeId as Je, watch as Re, withModifiers as gt } from "vue";
+import { openBlock as d, createElementBlock as h, createElementVNode as C, normalizeClass as W, toDisplayString as _, createTextVNode as q, useCssVars as I, ref as D, onMounted as V, createCommentVNode as y, Fragment as U, renderList as j, unref as v, createVNode as O, withDirectives as J, vModelText as Q, vModelSelect as mt, vModelCheckbox as bt, pushScopeId as We, popScopeId as Je, watch as Re, withModifiers as gt } from "vue";
 function Ke(e, r) {
   return function() {
     return e.apply(r, arguments);
@@ -338,14 +338,14 @@ function ce(e, r, t) {
     if (!l.isUndefined(m)) {
       if (p.indexOf(m) !== -1)
         throw Error("Circular reference detected in " + x.join("."));
-      p.push(m), l.forEach(m, function(T, _) {
+      p.push(m), l.forEach(m, function(T, E) {
         (!(l.isUndefined(T) || T === null) && o.call(
           r,
           T,
-          l.isString(_) ? _.trim() : _,
+          l.isString(E) ? E.trim() : E,
           x,
           R
-        )) === !0 && w(T, x ? x.concat(_) : [_]);
+        )) === !0 && w(T, x ? x.concat(E) : [E]);
       }), p.pop();
     }
   }
@@ -1426,8 +1426,8 @@ function Pr(e, r, t, n, o, i) {
     }, [
       C("b", {
         class: W(t.variant === "Error" ? "error-header" : t.variant === "Warning" ? "warning-header" : "")
-      }, E(t.variant), 3),
-      q(" " + E(t.message), 1)
+      }, _(t.variant), 3),
+      q(" " + _(t.message), 1)
     ], 2)
   ]);
 }
@@ -1494,7 +1494,7 @@ const Dr = {
     return (c, u) => (d(), h("div", null, [
       t.type === "radio" ? (d(), h("div", Dr, [
         C("p", Ir, [
-          q(E(t.label) + " ", 1),
+          q(_(t.label) + " ", 1),
           t.required ? (d(), h("label", Lr, "*")) : y("", !0)
         ]),
         e.orientation === "vertical" ? (d(), h("span", Ur, [
@@ -1511,7 +1511,7 @@ const Dr = {
             C("label", {
               class: "label-text",
               for: s(a)
-            }, E(a), 9, Mr)
+            }, _(a), 9, Mr)
           ]))), 128))
         ])) : y("", !0),
         e.orientation === "horizontal" ? (d(), h("span", Hr, [
@@ -1528,7 +1528,7 @@ const Dr = {
             C("label", {
               class: "label-text",
               for: s(a)
-            }, E(a), 9, zr)
+            }, _(a), 9, zr)
           ]))), 128))
         ])) : y("", !0),
         v(n) ? (d(), h("span", Wr, [
@@ -1538,7 +1538,7 @@ const Dr = {
             message: v(o)
           }, null, 8, ["message"])
         ])) : y("", !0),
-        t.help ? (d(), h("span", Jr, E(t.help), 1)) : y("", !0)
+        t.help ? (d(), h("span", Jr, _(t.help), 1)) : y("", !0)
       ])) : y("", !0)
     ]));
   }
@@ -1609,7 +1609,7 @@ const Gr = {
           }, null, 8, ["message"])
         ])) : y("", !0),
         C("p", Qr, [
-          q(E(t.label) + " ", 1),
+          q(_(t.label) + " ", 1),
           t.required ? (d(), h("label", Yr, "*")) : y("", !0)
         ]),
         e.orientation === "vertical" ? (d(), h("span", Zr, [
@@ -1622,7 +1622,7 @@ const Gr = {
               type: "checkbox"
             }, null, 40, en),
             q(),
-            C("label", tn, E(f), 1)
+            C("label", tn, _(f), 1)
           ]))), 128))
         ])) : y("", !0),
         e.orientation === "horizontal" ? (d(), h("span", rn, [
@@ -1635,10 +1635,10 @@ const Gr = {
               type: "checkbox"
             }, null, 40, nn),
             q(),
-            C("label", on, E(f), 1)
+            C("label", on, _(f), 1)
           ]))), 128))
         ])) : y("", !0),
-        t.help ? (d(), h("span", sn, E(t.help), 1)) : y("", !0)
+        t.help ? (d(), h("span", sn, _(t.help), 1)) : y("", !0)
       ])) : y("", !0)
     ]));
   }
@@ -1710,7 +1710,7 @@ const ln = { key: 0 }, cn = { class: "label" }, un = {
     return (u, a) => (d(), h("div", null, [
       t.type === "text-lg" ? (d(), h("span", ln, [
         C("p", cn, [
-          q(E(t.label) + " ", 1),
+          q(_(t.label) + " ", 1),
           t.required ? (d(), h("label", un, "*")) : y("", !0)
         ]),
         J(C("textarea", {
@@ -1728,7 +1728,7 @@ const ln = { key: 0 }, cn = { class: "label" }, un = {
             message: v(i)
           }, null, 8, ["message"])
         ])) : y("", !0),
-        t.help ? (d(), h("span", fn, E(t.help), 1)) : y("", !0)
+        t.help ? (d(), h("span", fn, _(t.help), 1)) : y("", !0)
       ])) : y("", !0)
     ]));
   }
@@ -1824,7 +1824,7 @@ const gn = { key: 0 }, yn = { class: "label" }, vn = {
     return (s, c) => (d(), h("div", null, [
       t.type === "text" ? (d(), h("span", gn, [
         C("p", yn, [
-          q(E(t.label) + " ", 1),
+          q(_(t.label) + " ", 1),
           t.required ? (d(), h("label", vn, "*")) : y("", !0)
         ]),
         J(C("input", {
@@ -1842,11 +1842,11 @@ const gn = { key: 0 }, yn = { class: "label" }, vn = {
             message: v(n).errorMessage.value
           }, null, 8, ["message"])
         ])) : y("", !0),
-        t.help ? (d(), h("span", Sn, E(t.help), 1)) : y("", !0)
+        t.help ? (d(), h("span", Sn, _(t.help), 1)) : y("", !0)
       ])) : y("", !0),
       t.type === "text-masked" ? (d(), h("span", _n, [
         C("p", En, [
-          q(E(t.label) + " ", 1),
+          q(_(t.label) + " ", 1),
           t.required ? (d(), h("label", wn, "*")) : y("", !0)
         ]),
         J(C("input", {
@@ -1864,7 +1864,7 @@ const gn = { key: 0 }, yn = { class: "label" }, vn = {
             message: v(n).errorMessage.value
           }, null, 8, ["message"])
         ])) : y("", !0),
-        t.help ? (d(), h("span", kn, E(t.help), 1)) : y("", !0)
+        t.help ? (d(), h("span", kn, _(t.help), 1)) : y("", !0)
       ])) : y("", !0)
     ]));
   }
@@ -1920,7 +1920,7 @@ const Tn = { key: 0 }, qn = { key: 0 }, Nn = { class: "label" }, Fn = {
           }, null, 8, ["message"])
         ])) : y("", !0),
         C("p", Nn, [
-          q(E(t.label) + " ", 1),
+          q(_(t.label) + " ", 1),
           t.required ? (d(), h("label", Fn, "*")) : y("", !0)
         ]),
         J(C("input", {
@@ -1933,7 +1933,7 @@ const Tn = { key: 0 }, qn = { key: 0 }, Nn = { class: "label" }, Fn = {
         }, null, 40, $n), [
           [Q, v(n)[t.variable]]
         ]),
-        t.help ? (d(), h("span", Bn, E(t.help), 1)) : y("", !0)
+        t.help ? (d(), h("span", Bn, _(t.help), 1)) : y("", !0)
       ])) : y("", !0)
     ]));
   }
@@ -1990,7 +1990,7 @@ const Dn = { key: 0 }, In = { key: 0 }, Ln = { class: "label" }, Un = {
           }, null, 8, ["message"])
         ])) : y("", !0),
         C("p", Ln, [
-          q(E(t.label) + " ", 1),
+          q(_(t.label) + " ", 1),
           t.required ? (d(), h("label", Un, "*")) : y("", !0)
         ]),
         J(C("select", {
@@ -2002,11 +2002,11 @@ const Dn = { key: 0 }, In = { key: 0 }, Ln = { class: "label" }, Un = {
             class: "option",
             key: f,
             value: a
-          }, E(a), 9, jn))), 128))
+          }, _(a), 9, jn))), 128))
         ], 544), [
           [mt, v(n)[t.variable]]
         ]),
-        t.help ? (d(), h("span", Mn, E(t.help), 1)) : y("", !0)
+        t.help ? (d(), h("span", Mn, _(t.help), 1)) : y("", !0)
       ])) : y("", !0)
     ]));
   }
@@ -2063,7 +2063,7 @@ const Vn = (e) => (We("data-v-369c0703"), e = e(), Je(), e), zn = { key: 0 }, Wn
         ])) : y("", !0),
         C("div", Jn, [
           C("span", Kn, [
-            q(E(t.label) + " ", 1),
+            q(_(t.label) + " ", 1),
             t.required ? (d(), h("label", Gn, "*")) : y("", !0)
           ]),
           C("div", {
@@ -2081,7 +2081,7 @@ const Vn = (e) => (We("data-v-369c0703"), e = e(), Je(), e), zn = { key: 0 }, Wn
             Xn
           ])
         ]),
-        t.help ? (d(), h("span", Qn, E(t.help), 1)) : y("", !0)
+        t.help ? (d(), h("span", Qn, _(t.help), 1)) : y("", !0)
       ])) : y("", !0)
     ]));
   }
@@ -2107,7 +2107,7 @@ const Zn = { class: "instructions" }, eo = {
     return I((t) => ({
       d5d125a6: e.backgroundColor,
       "6bef72e4": e.textColor
-    })), (t, n) => (d(), h("div", Zn, E(r.text), 1));
+    })), (t, n) => (d(), h("div", Zn, _(r.text), 1));
   }
 }, to = /* @__PURE__ */ $(eo, [["__scopeId", "data-v-b0037800"]]);
 const ro = { key: 0 }, no = { class: "label" }, oo = {
@@ -2159,7 +2159,7 @@ const ro = { key: 0 }, no = { class: "label" }, oo = {
     return (s, c) => (d(), h("div", null, [
       t.type === "number" ? (d(), h("span", ro, [
         C("p", no, [
-          q(E(t.label) + " ", 1),
+          q(_(t.label) + " ", 1),
           t.required ? (d(), h("label", oo, "*")) : y("", !0)
         ]),
         J(C("input", {
@@ -2178,12 +2178,12 @@ const ro = { key: 0 }, no = { class: "label" }, oo = {
             message: v(n).errorMessage.value
           }, null, 8, ["message"])
         ])) : y("", !0),
-        t.help ? (d(), h("span", ao, E(t.help), 1)) : y("", !0)
+        t.help ? (d(), h("span", ao, _(t.help), 1)) : y("", !0)
       ])) : y("", !0)
     ]));
   }
 }, ze = /* @__PURE__ */ $(lo, [["__scopeId", "data-v-134cb102"]]);
-const ft = (e) => (We("data-v-94424cf9"), e = e(), Je(), e), co = { class: "container" }, uo = ["onSubmit"], ho = { class: "title" }, fo = { key: 0 }, po = { style: { display: "flex" } }, mo = {
+const ft = (e) => (We("data-v-8b0e7d9d"), e = e(), Je(), e), co = { class: "container" }, uo = ["onSubmit"], ho = { class: "title" }, fo = { key: 0 }, po = { style: { display: "flex" } }, mo = {
   key: 0,
   class: "inner-column"
 }, bo = { key: 1 }, go = {
@@ -2247,54 +2247,54 @@ const ft = (e) => (We("data-v-94424cf9"), e = e(), Je(), e), co = { class: "cont
   emits: ["cancel", "submit", "submitted"],
   setup(e, { emit: r }) {
     const t = e;
-    I((_) => ({
-      "68cb7185": e.textColor,
-      "14d8c324": e.fontFamily,
-      "7d0825ab": e.themeColor,
-      "5958ef9b": v(i),
-      "43991d98": e.colSpacing
+    I((E) => ({
+      "31137f2e": e.textColor,
+      "6b87d0c0": e.fontFamily,
+      58919972: e.themeColor,
+      "3c66b437": v(i),
+      "34e27ed0": e.colSpacing
     }));
     const n = {};
     let o = {}, i = "100%";
     const s = D(null), c = D(null), u = D(null);
     let a = $r.create({});
-    a.interceptors.request.use((_) => _), a.interceptors.response.use(
-      (_) => _,
-      (_) => (_.response.status === 401 && alert("Wrong input"), _.response.status === 403 && alert("Not authorized to access that page. Access Denied"), Promise.reject(_))
+    a.interceptors.request.use((E) => E), a.interceptors.response.use(
+      (E) => E,
+      (E) => (E.response.status === 401 && alert("Wrong input"), E.response.status === 403 && alert("Not authorized to access that page. Access Denied"), Promise.reject(E))
     ), V(() => {
       t.hasCancelButton && (i = "50%"), t.loadFrom !== null && f(), t.data !== null && (o = t.data);
     });
     function f() {
       F(t.loadFrom);
     }
-    function p(_, A) {
-      n[_] = A;
+    function p(E, A) {
+      n[E] = A;
     }
     function R() {
       if (t.loadFrom !== null) {
-        let _ = s.server.url;
-        T(_, n);
+        let E = s.server.url;
+        T(E, n);
       } else
         r("submit", n);
     }
     function w() {
       r("cancel", "canceled");
     }
-    function m(_, A) {
-      n[A] = _;
+    function m(E, A) {
+      n[A] = E;
     }
-    function x(_, A) {
-      n[A] = _;
+    function x(E, A) {
+      n[A] = E;
     }
-    async function F(_) {
-      await a.get(_).then((A) => {
+    async function F(E) {
+      await a.get(E).then((A) => {
         s.value = A.data;
       }).catch((A) => {
         u.value = A;
       });
     }
-    async function T(_, A) {
-      await a.post(_, A).then((B) => {
+    async function T(E, A) {
+      await a.post(E, A).then((B) => {
         c.value = B.data;
       }).catch((B) => {
         u.value = B;
@@ -2304,14 +2304,14 @@ const ft = (e) => (We("data-v-94424cf9"), e = e(), Je(), e), co = { class: "cont
       o = s;
     }), Re(() => c, () => {
       r("submitted", c);
-    }), (_, A) => (d(), h("div", co, [
-      _.form.formData ? (d(), h("form", {
+    }), (E, A) => (d(), h("div", co, [
+      s.value.value ? (d(), h("form", {
         key: 0,
         class: W(e.hasBorder ? "form" : e.hasBorderWithShadow ? "form-shadow-borderless" : "form-borderless"),
         id: "form",
         onSubmit: gt(R, ["prevent"])
       }, [
-        C("h2", ho, E(v(o).title), 1),
+        C("h2", ho, _(v(o).title), 1),
         v(o).instructions ? (d(), h("div", fo, [
           O(to, {
             text: v(o).instructions.information,
@@ -2533,7 +2533,7 @@ const ft = (e) => (We("data-v-94424cf9"), e = e(), Je(), e), co = { class: "cont
         ]),
         v(o).informationLinks ? (d(), h("div", go, [
           (d(!0), h(U, null, j(v(o).informationLinks, (B, he) => (d(), h("p", { key: he }, [
-            q(E(B.label) + " ", 1),
+            q(_(B.label) + " ", 1),
             C("a", {
               class: "link",
               target: "_blank",
@@ -2553,13 +2553,13 @@ const ft = (e) => (We("data-v-94424cf9"), e = e(), Je(), e), co = { class: "cont
             }, "Cancel")) : y("", !0)
           ]),
           C("div", _o, [
-            C("button", Eo, E(t.submitButtonText), 1)
+            C("button", Eo, _(t.submitButtonText), 1)
           ])
         ])
       ], 42, uo)) : y("", !0)
     ]));
   }
-}, Oo = /* @__PURE__ */ $(wo, [["__scopeId", "data-v-94424cf9"]]), ko = {
+}, Oo = /* @__PURE__ */ $(wo, [["__scopeId", "data-v-8b0e7d9d"]]), ko = {
   install: (e, r) => {
     e.component("FormBuilder", Oo);
   }
