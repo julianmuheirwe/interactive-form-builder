@@ -6,8 +6,12 @@ as you will see in the usage below.
 
 > **Warning:** This library is still in experiment mode
 
-### Usage
+### Pre requisites
+- Vue 3.x
+- Vite
+- axios
 
+### Usage
 ```
 <FormBuilder 
   load-from="http://127.0.0.1/form"
