@@ -232,82 +232,101 @@
 </template>
 
 <script setup>
-import {defineComponent, onMounted, watch} from "vue";
-import {useFormControlStore} from "../form-control.js";
-import RadioGroup from "../../widgets/RadioGroup.vue";
-import CheckboxGroup from "../../widgets/CheckboxGroup.vue";
-import FormTextArea from "../../widgets/FormTextArea.vue";
-import FormInput from "../../widgets/FormInput.vue";
-import FormDate from "../../widgets/FormDate.vue";
-import FormSelect from "../../widgets/FormSelect.vue";
-import FormSwitch from "../../widgets/FormSwitch.vue";
-import Instructions from "../../widgets/Instructions.vue";
-import FormInputNumber from "../../widgets/FormInputNumber.vue";
+import {defineComponent, onMounted, ref, watch} from "vue";
+import axios from "axios"
+import RadioGroup from "../widgets/RadioGroup.vue";
+import CheckboxGroup from "../widgets/CheckboxGroup.vue";
+import FormTextArea from "../widgets/FormTextArea.vue";
+import FormInput from "../widgets/FormInput.vue";
+import FormDate from "../widgets/FormDate.vue";
+import FormSelect from "../widgets/FormSelect.vue";
+import FormSwitch from "../widgets/FormSwitch.vue";
+import Instructions from "../widgets/Instructions.vue";
+import FormInputNumber from "../widgets/FormInputNumber.vue";
 
-export default defineComponent({
-  name: 'FormBuilder',
-  props: {
-    loadFrom: {
-      type: String,
-      default: null
-    },
-    data: {
-      type: Object,
-      default: null
-    },
-    hasCancelButton: {
-      type: Boolean,
-      default: false
-    },
-    hasBorderWithShadow: {
-      type: Boolean,
-      default: false
-    },
-    hasBorder: {
-      type: Boolean,
-      default: true
-    },
-    columns: {
-      type: Number,
-      default: 1
-    },
-    submitButtonText: {
-      type: String,
-      default: "Submit"
-    },
-    colSpacing: {
-      type: String,
-      default: "5px"
-    },
-    fontFamily: {
-      type: String,
-      default: "Arial"
-    },
-    themeColor: {
-      type: String,
-      default: "#a0a0a0"
-    },
-    highlightColor: {
-      type: String,
-      default: "#d50303"
-    },
-    textColor: {
-      type: String,
-      default: "#000000"
-    },
+// export default defineComponent({
+//   name: 'FormBuilder',
+//   emits: ['cancel', 'submit', 'submitted']
+// })
+
+const props =defineProps(
+{
+  loadFrom: {
+    type: String,
+  default: null
   },
-  emits: ['cancel', 'submit', 'submitted']
+  data: {
+    type: Object,
+  default: null
+  },
+  hasCancelButton: {
+    type: Boolean,
+  default: false
+  },
+  hasBorderWithShadow: {
+    type: Boolean,
+  default: false
+  },
+  hasBorder: {
+    type: Boolean,
+  default: true
+  },
+  columns: {
+    type: Number,
+  default: 1
+  },
+  submitButtonText: {
+    type: String,
+  default: "Submit"
+  },
+  colSpacing: {
+    type: String,
+  default: "5px"
+  },
+  fontFamily: {
+    type: String,
+  default: "Arial"
+  },
+  themeColor: {
+    type: String,
+  default: "#a0a0a0"
+  },
+  highlightColor: {
+    type: String,
+  default: "#d50303"
+  },
+  textColor: {
+    type: String,
+  default: "#000000"
+  },
 })
 
-const form = useFormControlStore()
-
-
+const emit = defineEmits( ['cancel', 'submit', 'submitted'])
 const formData = {}
 let builderData = {}
 let btnWidth = "100%"
+const formToBuild = ref(null)
+const submit = ref(null)
+const error = ref(null)
+let api = axios.create({})
+
+api.interceptors.request.use((config) => {return config})
+api.interceptors.response.use(
+    (response) => response,
+    (error) => {
+      if (error.response.status === 401) {
+        alert("Wrong input")
+      }
+
+      if (error.response.status === 403) {
+        alert("Not authorized to access that page. Access Denied")
+      }
+      return Promise.reject(error)
+    }
+)
 
 onMounted(() => {
-  if (!props.hasCancelButton) {
+  if (props.hasCancelButton) {
     btnWidth = "50%"
   }
 
@@ -321,17 +340,16 @@ onMounted(() => {
 })
 
 function fetch() {
-  form.fetchForm(props.loadFrom)
+  fetchForm(props.loadFrom)
 }
 
 function onFormUpdated(variable, value){
   formData[variable] = value
 }
 function onSubmit() {
-  alert(JSON.stringify(formData))
   if (props.loadFrom !== null) {
-    let url = form.formData.server.url
-    form.submitForm(url, formData)
+    let url = formToBuild.server.url
+    submitForm(url, formData)
   } else {
     emit("submit", formData)
   }
@@ -339,10 +357,6 @@ function onSubmit() {
 
 function cancel() {
   emit("cancel", "canceled")
-}
-
-function getEndpoint(server) {
-  return server.url + ":" + server.port + server.endpoint;
 }
 
 function pickedItem(value, variable) {
@@ -353,16 +367,31 @@ function checkedItems(values, variable) {
   formData[variable] = values
 }
 
-watch(() => form.formData, () => {
-  builderData = form.formData
+async function fetchForm(endpoint) {
+  await api.get(endpoint)
+      .then((response) => {
+        formToBuild.value = response.data
+      })
+      .catch((response) => {
+        error.value = response
+      })
+}
+async function submitForm(endpoint, data) {
+  await api.post(endpoint, data)
+      .then((response) => {
+        submit.value = response.data
+      })
+      .catch((response) => {
+        error.value = response
+      })
+}
+
+watch(() => formToBuild, () => {
+  builderData = formToBuild
 })
 
-watch(() => form.submit, () => {
-  emit("submitted", form.submit)
-})
-
-watch(() => form.error, () => {
-  alert(JSON.stringify(form.error))
+watch(() => submit, () => {
+  emit("submitted", submit)
 })
 
 </script>

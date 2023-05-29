@@ -1,28 +1,27 @@
 {
   "name": "interactive-form-builder",
   "version": "0.1.0",
-  "description": "",
-  "files": [
-    "dist/*"
-  ],
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rollup -c"
+  "main": "./dist/form-builder.umd.js",
+  "module": "./dist/form-builder.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/form-builder.es.js",
+      "require": "./dist/form-builder.umd.js"
+    },
+    "./dist/style.css": "./dist/style.css"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
+    "@vitejs/plugin-vue": "^4.2.3",
     "axios": "^1.4.0",
-    "pinia": "^2.1.2",
+    "vite": "^4.3.9",
     "vue": "^3.0.0"
+  },
+  "devdependencies": {
+    "@vitejs/plugin-vue": "^2.0.0",
+    "vite": "^4.3.9"
   },
   "peerDependencies": {
     "axios": "^1.4.0",
-    "pinia": "^2.1.2",
     "vue": "^3.0.0"
-  },
-  "devDependencies": {
-
   }
 }
