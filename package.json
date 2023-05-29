@@ -7,8 +7,7 @@
     ".": {
       "import": "./dist/form-builder.mjs",
       "require": "./dist/form-builder.umd.js"
-    },
-    "./dist/style.css": "./dist/style.css"
+    }
   },
   "files": [
     "dist",
