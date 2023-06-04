@@ -1,8 +1,6 @@
 import FormBuilder from "./lib/FormBuilder.vue";
 export default {
-    install: (app) =>{
+    install: (app, options) =>{
       app.component("FormBuilder", FormBuilder)
     },
 };
-
-export {default as FormBuilder } from "./lib/FormBuilder.vue";

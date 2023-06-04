@@ -2556,11 +2556,10 @@ const ht = (e) => (ze("data-v-2d1322bb"), e = e(), We(), e), lo = { class: "cont
     ]));
   }
 }, wo = /* @__PURE__ */ $(Eo, [["__scopeId", "data-v-2d1322bb"]]), Ro = {
-  install: (e) => {
+  install: (e, r) => {
     e.component("FormBuilder", wo);
   }
 };
 export {
-  wo as FormBuilder,
   Ro as default
 };
